@@ -10,8 +10,10 @@ services:
     tty: true
     working_dir: /var/www
     volumes:
-       - ./:/var/www
-       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
 
   #NGINX Service
   webserver:
@@ -39,7 +41,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - dbdata:/var/lib/postgresql/data
+      - ./postgresql/postgresql.conf:/etc/postgresql/postgresql.conf
     networks:
       - app-network
 
