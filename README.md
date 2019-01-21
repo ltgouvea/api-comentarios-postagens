@@ -28,5 +28,11 @@ bash app-install.sh
 
 After those two commands, you're good to develop your API.
 
+## Built With
+
+* [Larevel 5.7](https://laravel.com/docs/5.7)
+* [PostgreSQL](https://www.postgresql.org/docs/)
+* [Adminer](https://www.adminer.org/)
+
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
