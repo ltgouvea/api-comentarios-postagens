@@ -30,4 +30,3 @@ After those two commands, you're good to develop your API.
 
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
-
