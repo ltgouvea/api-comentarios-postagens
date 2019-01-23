@@ -1,0 +1,67 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    image: php:fpm
+    container_name: app
+    restart: unless-stopped
+    entrypoint:
+      - php-fpm
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #NGINX Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www
+      - ./nginx/:/etc/nginx/
+    networks:
+      - app-network
+
+  #PostgreSQL Service
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laravel-api
+      POSTGRES_PASSWORD: password
+    tty: true
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./postgresql/postgresql.conf:/etc/postgresql/postgresql.conf
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    networks:
+    - app-network
+
+#Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
