@@ -6,8 +6,11 @@ COPY composer.lock composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
+# Update sources.list
+RUN apt-get update
+
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
   build-essential \
   libpq-dev \
   libpng-dev \
@@ -17,7 +20,6 @@ RUN apt-get update && apt-get install -y \
   zip \
   jpegoptim optipng pngquant gifsicle \
   vim \
-  nano \
   unzip \
   git \
   curl
@@ -26,7 +28,9 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
-RUN docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+RUN docker-php-ext-install pdo pdo_pgsql pgsql
+RUN docker-php-ext-install mbstring zip exif pcntl
 RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 RUN docker-php-ext-install gd
 
