@@ -34,9 +34,9 @@ services:
     networks:
       - app-network
 
-  #PostgreSQL Service
+  #PostgreSQL + Postgis Service
   pgdb:
-    image: postgres
+    image: mdillon/postgis
     container_name: pgdb
     restart: unless-stopped
     environment:
