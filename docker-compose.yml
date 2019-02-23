@@ -3,12 +3,16 @@ services:
 
   #PHP Service
   app:
-    image: php:fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
     container_name: app
     restart: unless-stopped
-    entrypoint:
-      - php-fpm
     tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
       - ./:/var/www
@@ -26,18 +30,19 @@ services:
       - "8000:8000"
     volumes:
       - ./:/var/www
-      - ./nginx/:/etc/nginx/
+      - ./nginx/:/etc/nginx/conf.d/
     networks:
       - app-network
 
-  #PostgreSQL Service
+  #PostgreSQL + Postgis Service
   pgdb:
-    image: postgres
+    image: mdillon/postgis
     container_name: pgdb
     restart: unless-stopped
     environment:
       POSTGRES_DB: laravel-api
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: laravel-root
+      POSTGRES_PASSWORD: laravel-password
     tty: true
     ports:
       - "5432:5432"
