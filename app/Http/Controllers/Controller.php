@@ -59,7 +59,7 @@ class Controller extends BaseController
 
     public function validationError($error)
     {
-        return Response::json($this->createError($error), 402);
+        return Response::json($this->createError('Validation error', $error), 402);
     }
 
     public function unauthorizedError($error)
