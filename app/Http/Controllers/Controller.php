@@ -33,7 +33,7 @@ class Controller extends BaseController
      *
      * @return array
      */
-    public static function createError($message, array $data = [])
+    public static function createError($message, $data = [])
     {
         $res = [
             'success' => false,
@@ -60,5 +60,10 @@ class Controller extends BaseController
     public function validationError($error)
     {
         return Response::json($this->createError($error), 402);
+    }
+
+    public function unauthorizedError($error)
+    {
+        return Response::json($this->createError('Unauthorized', $error), 401);
     }
 }

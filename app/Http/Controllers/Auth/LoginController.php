@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -14,6 +15,13 @@ class LoginController extends Controller
             'POST'
         );
 
-        return Route::dispatch($createTokenRequest);
+
+        $tokenResponse = json_decode(Route::dispatch($createTokenRequest)->getContent());
+
+        if (array_key_exists("error", $tokenResponse)) {
+            return $this->unauthorizedError($tokenResponse);
+        }
+
+        return $this->sendResponse($tokenResponse, 'Login success');
     }
 }
