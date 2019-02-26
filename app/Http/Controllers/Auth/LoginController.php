@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         $tokenResponse = json_decode(Route::dispatch($createTokenRequest)->getContent());
 
-        if (array_key_exists("error", $tokenResponse)) {
+        if (array_key_exists('error', $tokenResponse)) {
             return $this->sendError($tokenResponse->message, [], 401);
         }
 
