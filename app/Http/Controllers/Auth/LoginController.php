@@ -19,7 +19,7 @@ class LoginController extends Controller
         $tokenResponse = json_decode(Route::dispatch($createTokenRequest)->getContent());
 
         if (array_key_exists("error", $tokenResponse)) {
-            return $this->unauthorizedError($tokenResponse);
+            return $this->sendError($tokenResponse->message, [], 401);
         }
 
         return $this->sendResponse($tokenResponse, 'Login success');

@@ -35,19 +35,19 @@ class Controller extends BaseController
      */
     public static function createError($message, $data = [])
     {
-        $res = [
+        $response = [
             'success' => false,
             'message' => $message,
         ];
 
         if (!empty($data)) {
-            $res['data'] = $data;
+            $response['data'] = $data;
         }
 
-        return $res;
+        return $response;
     }
 
-    public function sendResponse($result, $message)
+    public function sendResponse($result, $message = 'Action sucessfull')
     {
         return Response::json($this->createResponse($message, $result));
     }
@@ -64,6 +64,6 @@ class Controller extends BaseController
 
     public function unauthorizedError($error)
     {
-        return Response::json($this->createError('Unauthorized', $error), 401);
+        return Response::json($this->createError('Unauthorized'), 401);
     }
 }
