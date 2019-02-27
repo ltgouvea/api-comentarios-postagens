@@ -41,6 +41,8 @@ $ docker-compose up --build
 * [PostgreSQL](https://www.postgresql.org/docs/)
 * [PostGIS](https://postgis.net/)
 * [Adminer](https://www.adminer.org/)
+* [Laravel Passport](https://github.com/laravel/passport)
+* [Laratrust](https://github.com/santigarcor/laratrust)
 
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
