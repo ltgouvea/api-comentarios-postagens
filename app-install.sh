@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install all dependencies
+docker-compose exec app composer install
+
 # Grant user and group read, write and execute permissions on storage folder
 docker-compose exec app chmod -R 775 storage
 

@@ -17,7 +17,11 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@create');
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('/user', function (Request $request) {
+    Route::get('/me', function (Request $request) {
         return $request->user();
     });
+
+    Route::get('notifications', 'NotificationController@getNotificationsFromUser');
+    Route::get('notifications/unread', 'NotificationController@getUnreadNotificationsFromUser');
+    Route::patch('notifications/read/{id}', 'NotificationController@markNotificationAsRead');
 });
