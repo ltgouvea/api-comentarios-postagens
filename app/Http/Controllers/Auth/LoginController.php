@@ -8,13 +8,18 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+
+    /**
+     * Login creating auth data using laravel passport
+     *
+     * @return $tokenResponse
+     */
+    public function login()
     {
         $createTokenRequest = Request::create(
             'oauth/token',
             'POST'
         );
-
 
         $tokenResponse = json_decode(Route::dispatch($createTokenRequest)->getContent());
 

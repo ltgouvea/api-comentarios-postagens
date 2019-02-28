@@ -52,17 +52,17 @@ class Controller extends BaseController
         return Response::json($this->createResponse($message, $result));
     }
 
-    public function sendError($error, $data = [], $code = 404)
+    public function sendError($message, $data = [], $code = 404)
     {
-        return Response::json($this->createError($error, $data), $code);
+        return Response::json($this->createError($message, $data), $code);
     }
 
-    public function validationError($error)
+    public function validationError($data = [])
     {
-        return Response::json($this->createError('Validation error', $error), 402);
+        return Response::json($this->createError('Validation error', $data), 403);
     }
 
-    public function unauthorizedError($error)
+    public function unauthorizedError()
     {
         return Response::json($this->createError('Unauthorized'), 401);
     }
