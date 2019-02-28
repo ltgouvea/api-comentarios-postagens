@@ -16,8 +16,7 @@ class RegisterController extends Controller
      * @return void
      */
     public function __construct()
-    {
-    }
+    { }
 
     /**
      * Get a validator for an incoming registration request.
@@ -35,13 +34,14 @@ class RegisterController extends Controller
             'email' => 'Email is invalid.',
             'unique' => 'That :attribute is already in use.',
             'confirmed' => 'The :attribute confirmation does not match.',
-            'min' => 'The :attribute value must have at least :min characters.'
+            'min' => 'The :attribute value must have at least :min characters.',
+            'regex' => 'Your password must have at least one uppercase or lowercase letter, a number, and a special character.'
         ];
 
         return Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
         ], $messages);
     }
 
