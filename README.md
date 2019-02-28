@@ -10,7 +10,7 @@ Docker https://docs.docker.com/install/
 
 Docker Compose https://docs.docker.com/compose/install/
 
-## Instalation
+## Installation
 
 This boilerplate is fully dockerized, to install it you must fulfil the requirements listed above.
 
