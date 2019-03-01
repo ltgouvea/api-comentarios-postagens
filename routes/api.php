@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@create');
+Route::patch('users/password/reset', 'UserController@requestPasswordReset');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/me', function (Request $request) {
