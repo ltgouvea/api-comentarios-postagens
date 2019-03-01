@@ -62,7 +62,6 @@ class User extends Authenticatable
             Mail::to($this->email, $this->name)->send(new PasswordReset($this->email, $url, $mailSubject));
             return true;
         } catch (\Exception $e) {
-            dd($e);
             return false;
         }
     }

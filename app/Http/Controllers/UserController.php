@@ -12,11 +12,13 @@ class UserController extends Controller
         $user = User::where('email', $request->input('email'))->first();
 
         if (!$user) {
-            $this->sendError('User not found');
+            return $this->sendError('User not found');
         }
 
-        $user->generatePassword();
-
-        $this->sendResponse([], 'Password reset requested sucessfully');
+        if ($user->generatePassword()) {
+            return $this->sendResponse([], 'Password reset requested sucessfully');
+        } else {
+            return $this->sendError('Something went wrong with the request, please try again.');
+        }
     }
 }
