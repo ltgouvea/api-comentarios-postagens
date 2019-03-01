@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+
+    public function authenticated(Request $request, $user)
+    {
+        $user->saveLastLogin($request->getClientIp());
+    }
 
     /**
      * Login creating auth data using laravel passport
