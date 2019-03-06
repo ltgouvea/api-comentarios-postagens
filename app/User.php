@@ -7,10 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
-use App\Mail\PasswordReset;
-use Illuminate\Support\Facades\Hash;
+use App\PasswordReset;
 
 class User extends Authenticatable
 {
@@ -40,6 +38,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function passwordResets()
+    {
+        return $this->hasMany('App\PasswordReset', 'email');
+    }
+
     public function saveLastLogin($ip = '')
     {
         $this->last_login_at = Carbon::now()->toDateTimeString();
@@ -48,21 +51,12 @@ class User extends Authenticatable
     }
 
     /**
-     * Enviar Senha de Acesso ao Usuário.
+     * Send the user a link to reset their password
      *
      */
     public function generatePassword()
     {
-
-        $passwordHash = Hash::make($this->id);
-        $url = url('new-password/' . $passwordHash);
-        $mailSubject = $this->last_password_change == null ? 'Password change' : 'Password creation';
-
-        try {
-            Mail::to($this->email, $this->name)->send(new PasswordReset($this->email, $url, $mailSubject));
-            return true;
-        } catch (\Exception $e) {
-            return false;
-        }
+        $passwordReset = new PasswordReset;
+        return $passwordReset->createNewPasswordReset($this->email, $this->name);
     }
 }

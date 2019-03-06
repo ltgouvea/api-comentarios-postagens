@@ -12,10 +12,16 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        App\User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('123456')
-        ]);
+        if (!App\User::where('email', 'admin@admin.com')->first()) {
+            $this->command->info('Creating admin user...');
+            App\User::create([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('123456')
+            ]);
+            $this->command->info('Admin user created successfully.');
+        } else {
+            $this->command->info('Admin user already created.');
+        }
     }
 }
