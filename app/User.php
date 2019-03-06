@@ -9,6 +9,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use App\PasswordReset;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -54,9 +55,16 @@ class User extends Authenticatable
      * Send the user a link to reset their password
      *
      */
-    public function generatePassword()
+    public function generatePasswordResetMail()
     {
         $passwordReset = new PasswordReset;
         return $passwordReset->createNewPasswordReset($this->email, $this->name);
+    }
+
+    public function redefinePassword($newPassword)
+    {
+        $this->password = Hash::make($newPassword);
+        $this->last_password_change = Carbon::now();
+        $this->save();
     }
 }

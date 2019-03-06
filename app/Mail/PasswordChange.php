@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class PasswordReset extends Mailable implements ShouldQueue
+class PasswordChange extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,10 @@ class PasswordReset extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(string $email, string $url, string $subject)
+    public function __construct(string $email, string $subject)
     {
         $this->subject($subject);
         $this->data = [
-            'url' => $url,
             'email' => $email
         ];
     }
@@ -33,7 +32,7 @@ class PasswordReset extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.password.reset')
+        return $this->markdown('emails.password.change')
             ->with('data', $this->data);
     }
 }
