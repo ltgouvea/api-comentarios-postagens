@@ -12,8 +12,6 @@ use Carbon\Carbon;
 
 class PasswordReset extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'password_resets';
 
     /**
@@ -28,9 +26,16 @@ class PasswordReset extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'email');
+        return $this->belongsTo('App\User', 'email', 'email');
     }
 
+    /**
+     * Sends an email with a link to the user reset his password
+     *
+     * @param string $email
+     * @param string $name
+     * @return void
+     */
     public function createNewPasswordReset(string $email, string $name)
     {
         $this->email = $email;
@@ -47,12 +52,20 @@ class PasswordReset extends Model
         }
     }
 
-    public function redefineUserPassword($newPassword)
+    /**
+     * Change the user password and send an email to notify it
+     * Also deletes the current PasswordReset request
+     *
+     * @param string $newPassword
+     * @return void
+     */
+    public function redefineUserPassword(string $newPassword)
     {
-        $this->user()->redefinePassword($newPassword);
+        $this->user->redefinePassword($newPassword);
 
         try {
             Mail::to($this->email)->send(new PasswordChangeMail($this->email, 'Your password has been changed'));
+            $this->delete();
             return true;
         } catch (\Exception $e) {
             return false;

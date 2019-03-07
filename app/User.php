@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function passwordResets()
     {
-        return $this->hasMany('App\PasswordReset', 'email');
+        return $this->hasMany('App\PasswordReset', 'email', 'email');
     }
 
     public function saveLastLogin($ip = '')
@@ -52,8 +52,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Send the user a link to reset their password
+     * Send the user a link to reset their password using the PasswordReset model
      *
+     *
+     * @return void
      */
     public function generatePasswordResetMail()
     {
@@ -61,7 +63,13 @@ class User extends Authenticatable
         return $passwordReset->createNewPasswordReset($this->email, $this->name);
     }
 
-    public function redefinePassword($newPassword)
+    /**
+     * Changes the user password and save the date it was changed
+     *
+     * @param string $newPassword
+     * @return void
+     */
+    public function redefinePassword(string $newPassword)
     {
         $this->password = Hash::make($newPassword);
         $this->last_password_change = Carbon::now();
