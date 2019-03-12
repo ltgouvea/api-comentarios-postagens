@@ -23,6 +23,9 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
 
+    Route::get('users', 'UserController@index');
+    Route::get('users/{id}', 'UserController@find');
+
     Route::get('notifications', 'NotificationController@getNotificationsFromUser');
     Route::get('notifications/unread', 'NotificationController@getUnreadNotificationsFromUser');
     Route::patch('notifications/read/{id}', 'NotificationController@markNotificationAsRead');

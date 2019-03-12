@@ -39,6 +39,63 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * Array containing validation rules of this model
+     *
+     * @var array
+     */
+    protected $validation_rules = [
+        'rules' => [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
+        ],
+        'messages' => [
+            'required' => 'The field :attribute is required.',
+            'email' => 'Email is invalid.',
+            'unique' => 'That :attribute is already in use.',
+            'confirmed' => 'The :attribute confirmation does not match.',
+            'min' => 'The :attribute value must have at least :min characters.',
+            'regex' => 'Your password must have at least one uppercase or lowercase letter, a number, and a special character.'
+        ]
+    ];
+
+    /**
+     * Get the validation rules that apply to the STORE request
+     *
+     * @return array
+     */
+    public function getStoreValidationRules()
+    {
+        return (object)$this->validation_rules;
+    }
+
+    /**
+     * Get the validation rules that apply to the STORE request
+     *
+     * @return array
+     */
+    public function getUpdateValidationRules()
+    {
+        $updateValidationRules = (object)$this->validation_rules;
+        unset($updateValidationRules->rules['password']);
+
+        return $updateValidationRules;
+    }
+
+    /**
+     * Get the password validation rule
+     *
+     * @return void
+     */
+    public function getPasswordValidationRules()
+    {
+        return (object)[
+            'rules' => [$this->validation_rules['rules']['password']],
+            'messages' => $this->validation_rules['messages']
+        ];
+    }
+
     public function passwordResets()
     {
         return $this->hasMany('App\PasswordReset', 'email', 'email');
