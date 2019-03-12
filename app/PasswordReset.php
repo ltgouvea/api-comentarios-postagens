@@ -24,6 +24,11 @@ class PasswordReset extends Model
         'token'
     ];
 
+    /**
+     * BelongsTo App\User relationship
+     *
+     * @return BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User', 'email', 'email');

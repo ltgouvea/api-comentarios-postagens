@@ -46,9 +46,9 @@ class User extends Authenticatable
      */
     protected $validation_rules = [
         'rules' => [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
+            'name' => ['required' => 'required', 'string', 'max:255'],
+            'email' => ['required' => 'required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required' => 'required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
         ],
         'messages' => [
             'required' => 'The field :attribute is required.',
@@ -61,9 +61,30 @@ class User extends Authenticatable
     ];
 
     /**
+     * HasMany App\passwordResets relationship
+     *
+     * @return HasMany
+     */
+    public function passwordResets()
+    {
+        return $this->hasMany('App\PasswordReset', 'email', 'email');
+    }
+
+    /**
+     * Hash password using Illuminate\Support\Facades\Hash
+     *
+     * @param string $password
+     * @return string
+     */
+    public function hashPassword(string $password)
+    {
+        return Hash::make($password);
+    }
+
+    /**
      * Get the validation rules that apply to the STORE request
      *
-     * @return array
+     * @return object
      */
     public function getStoreValidationRules()
     {
@@ -73,14 +94,16 @@ class User extends Authenticatable
     /**
      * Get the validation rules that apply to the STORE request
      *
-     * @return array
+     * @return object
      */
     public function getUpdateValidationRules()
     {
         $updateValidationRules = (object)$this->validation_rules;
 
-        unset($updateValidationRules->rules['password']);
-        unset($updateValidationRules->rules['email']);
+        // Unset the 'required' rule
+        foreach ($updateValidationRules->rules as $key => $value) {
+            unset($updateValidationRules->rules[$key]['required']);
+        }
 
         return $updateValidationRules;
     }
@@ -88,7 +111,7 @@ class User extends Authenticatable
     /**
      * Get the password validation rule
      *
-     * @return void
+     * @return object
      */
     public function getPasswordValidationRules()
     {
@@ -98,11 +121,12 @@ class User extends Authenticatable
         ];
     }
 
-    public function passwordResets()
-    {
-        return $this->hasMany('App\PasswordReset', 'email', 'email');
-    }
-
+    /**
+     * Save last login time and IP
+     *
+     * @param string $ip
+     * @return void
+     */
     public function saveLastLogin($ip = '')
     {
         $this->last_login_at = Carbon::now()->toDateTimeString();

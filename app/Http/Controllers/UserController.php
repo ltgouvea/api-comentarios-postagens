@@ -109,7 +109,7 @@ class UserController extends Controller
         $user->fill([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
+            'password' => $user->hashPassword($request->input('password')),
         ]);
 
         $user->save();
@@ -132,20 +132,22 @@ class UserController extends Controller
             return $this->sendError('User not found');
         }
 
-        $validator = Validator::make($request->all(), $user->getUpdateValidationRules()->rules, $user->getUpdateValidationRules()->messages);
+        $inputs = $request->all();
+        $inputsToFill = array_diff($inputs, $user->toArray());
+        $validator = Validator::make($inputsToFill, $user->getUpdateValidationRules()->rules, $user->getUpdateValidationRules()->messages);
+
+        if (isset($inputs['password'])) {
+            $inputs['password'] = $user->hashPassword($inputs['password']);
+        }
 
         if ($validator->fails()) {
             return $this->sendError('Creation error', $validator->errors()->toArray(), 400);
         }
 
-        $user->fill([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-        ]);
-
+        $user->fill($inputsToFill);
         $user->update();
 
-        return $this->sendResponse($user, 'User created');
+        return $this->sendResponse($user, 'User updated');
     }
 
     /**
