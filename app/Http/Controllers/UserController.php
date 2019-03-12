@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\PasswordReset;
 
@@ -34,7 +35,7 @@ class UserController extends Controller
      * Change an user password based on a password reset request
      *
      * @param Request $request
-     * @return Request
+     * @return Response
      */
     public function changeUserPassword(Request $request)
     {
@@ -87,9 +88,15 @@ class UserController extends Controller
             return $this->sendError('User not found');
         }
 
-        return $this->sendResponse($user, 'Users retrieved sucessfully');
+        return $this->sendResponse($user, 'User retrieved sucessfully');
     }
 
+    /**
+     * Store a newly created user
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function store(Request $request)
     {
         $user = new User;
@@ -110,7 +117,14 @@ class UserController extends Controller
         return $this->sendResponse($user, 'User created');
     }
 
-    public function update($id, Request $request)
+    /**
+     * Update a previously created user
+     *
+     * @param integer $id
+     * @param Request $request
+     * @return Response
+     */
+    public function update(int $id, Request $request)
     {
         $user = User::find($id);
 
@@ -129,14 +143,19 @@ class UserController extends Controller
             'email' => $request->input('email'),
         ]);
 
-        $user->save();
+        $user->update();
 
         return $this->sendResponse($user, 'User created');
     }
 
-
-
-    public function delete($id, Request $request)
+    /**
+     * Soft deletes an user
+     *
+     * @param integer $id
+     * @param Request $request
+     * @return Response
+     */
+    public function delete(int $id, Request $request)
     {
         $user = User::find($id);
 

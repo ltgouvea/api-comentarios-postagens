@@ -78,7 +78,9 @@ class User extends Authenticatable
     public function getUpdateValidationRules()
     {
         $updateValidationRules = (object)$this->validation_rules;
+
         unset($updateValidationRules->rules['password']);
+        unset($updateValidationRules->rules['email']);
 
         return $updateValidationRules;
     }
