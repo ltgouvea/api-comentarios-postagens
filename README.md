@@ -73,7 +73,7 @@ alias dcd='docker-compose down'
 
 ## Built With
 
-* [Laravel 5.8](https://laravel.com/docs/5.8)
+* [Laravel 5.7](https://laravel.com/docs/5.7)
 * [PostgreSQL](https://www.postgresql.org/docs/)
 * [PostGIS](https://postgis.net/)
 * [Adminer](https://www.adminer.org/)
