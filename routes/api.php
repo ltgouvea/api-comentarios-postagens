@@ -23,6 +23,12 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
 
+    Route::get('users', 'UserController@index')->middleware('permission:read-user');
+    Route::post('users', 'UserController@store')->middleware('permission:create-user');
+    Route::get('users/{id}', 'UserController@find')->middleware('permission:find-user');
+    Route::patch('users/{id}', 'UserController@update')->middleware('permission:update-user');
+    Route::delete('users/{id}', 'UserController@delete')->middleware('permission:delete-user');
+
     Route::get('notifications', 'NotificationController@getNotificationsFromUser');
     Route::get('notifications/unread', 'NotificationController@getUnreadNotificationsFromUser');
     Route::patch('notifications/read/{id}', 'NotificationController@markNotificationAsRead');

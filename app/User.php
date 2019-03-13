@@ -39,11 +39,106 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * Array containing validation rules of this model
+     *
+     * @var array
+     */
+    protected $validation_rules = [
+        'rules' => [
+            'name' => ['required' => 'required', 'string', 'max:255'],
+            'email' => ['required' => 'required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required' => 'required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
+        ],
+        'messages' => [
+            'required' => 'The field :attribute is required.',
+            'email' => 'Email is invalid.',
+            'unique' => 'That :attribute is already in use.',
+            'confirmed' => 'The :attribute confirmation does not match.',
+            'min' => 'The :attribute value must have at least :min characters.',
+            'regex' => 'Your password must have at least one uppercase or lowercase letter, a number, and a special character.'
+        ]
+    ];
+
+    /**
+     * HasMany App\PasswordResets relationship
+     *
+     * @return HasMany
+     */
     public function passwordResets()
     {
         return $this->hasMany('App\PasswordReset', 'email', 'email');
     }
 
+    /**
+     * Hash password using Illuminate\Support\Facades\Hash
+     *
+     * @param string $password
+     * @return string
+     */
+    public function hashPassword(string $password)
+    {
+        return Hash::make($password);
+    }
+
+    /**
+     * Get the validation rules that apply to the STORE request
+     *
+     * @return object
+     */
+    public function getStoreValidationRules()
+    {
+        return (object)$this->validation_rules;
+    }
+
+    /**
+     * Get the validation rules that apply to the STORE request
+     *
+     * @return object
+     */
+    public function getUpdateValidationRules()
+    {
+        $updateValidationRules = (object)$this->validation_rules;
+
+        // Unset the 'required' rule
+        foreach ($updateValidationRules->rules as $key => $value) {
+            unset($updateValidationRules->rules[$key]['required']);
+        }
+
+        return $updateValidationRules;
+    }
+
+    /**
+     * Get the password validation rule
+     *
+     * @return object
+     */
+    public function getPasswordValidationRules()
+    {
+        return (object)[
+            'rules' => [$this->validation_rules['rules']['password']],
+            'messages' => $this->validation_rules['messages']
+        ];
+    }
+
+    /**
+     * Simple search by name and email
+     *
+     * @param [type] $query
+     * @param string $search
+     * @return void
+     */
+    public function scopeSearch($query, string $search)
+    {
+        return $query->whereRaw("concat( upper(name), upper(email)) LIKE concat('%', upper('" . str_replace(' ', '%', $search) . "'), '%')");
+    }
+
+    /**
+     * Save last login time and IP
+     *
+     * @param string $ip
+     * @return void
+     */
     public function saveLastLogin($ip = '')
     {
         $this->last_login_at = Carbon::now()->toDateTimeString();
