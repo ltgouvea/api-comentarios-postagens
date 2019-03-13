@@ -12,5 +12,5 @@ docker-compose exec app php artisan key:generate
 # Cache settings into files
 docker-compose exec app php artisan config:cache
 
-# Execute the projects first migrations with seeder
-docker-compose exec app php artisan migrate --seed
+# Execute the projects first migrations
+docker-compose exec app php artisan migrate
