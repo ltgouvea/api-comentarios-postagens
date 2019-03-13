@@ -61,7 +61,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * HasMany App\passwordResets relationship
+     * HasMany App\PasswordResets relationship
      *
      * @return HasMany
      */
@@ -119,6 +119,18 @@ class User extends Authenticatable
             'rules' => [$this->validation_rules['rules']['password']],
             'messages' => $this->validation_rules['messages']
         ];
+    }
+
+    /**
+     * Simple search by name and email
+     *
+     * @param [type] $query
+     * @param string $search
+     * @return void
+     */
+    public function scopeSearch($query, string $search)
+    {
+        return $query->whereRaw("concat( upper(name), upper(email)) LIKE concat('%', upper('" . str_replace(' ', '%', $search) . "'), '%')");
     }
 
     /**

@@ -68,7 +68,17 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $items = $request->input('items') ? $request->input('items') : 25;
-        $users = User::paginate($items);
+        $query = new User();
+
+        if ($request->input('searchQuery')) {
+            $query = $query->search($request->input('searchQuery'));
+        }
+
+        if ($request->input('orderBy')) {
+            $query = $query->orderBy($request->input('orderBy'));
+        }
+
+        $users = $query->paginate($items);
 
         return $this->sendResponse($users, 'Users retrieved sucessfully');
     }
