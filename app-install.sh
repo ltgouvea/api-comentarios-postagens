@@ -14,3 +14,6 @@ docker-compose exec app php artisan config:cache
 
 # Execute the projects first migrations with seeder
 docker-compose exec app php artisan migrate --seed
+
+# Configure passport
+docker-compose exec app php artisan passport:install

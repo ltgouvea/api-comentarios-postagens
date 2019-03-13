@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
 
 class RegisterController extends Controller
 {
@@ -19,33 +20,6 @@ class RegisterController extends Controller
     { }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(Request $request)
-    {
-        /**
-         * Edit your login validation messages here (i18n)
-         * */
-        $messages = [
-            'required' => 'The field :attribute is required.',
-            'email' => 'Email is invalid.',
-            'unique' => 'That :attribute is already in use.',
-            'confirmed' => 'The :attribute confirmation does not match.',
-            'min' => 'The :attribute value must have at least :min characters.',
-            'regex' => 'Your password must have at least one uppercase or lowercase letter, a number, and a special character.'
-        ];
-
-        return Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*[\d\X])(?=.*[!@#$%&*().,;]).+$/', 'confirmed'],
-        ], $messages);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  Request  $request
@@ -53,17 +27,20 @@ class RegisterController extends Controller
      */
     protected function create(Request $request)
     {
-        $validator = $this->validator($request);
+        $user = new User;
+        $validator = Validator::make($request->all(), $user->getStoreValidationRules()->rules, $user->getStoreValidationRules()->messages);
 
         if ($validator->fails()) {
             return $this->sendError('Creation error', $validator->errors()->toArray(), 400);
         }
 
-        $user = User::create([
+        $user->fill([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
+            'password' => $user->hashPassword($request->input('password')),
         ]);
+
+        $user->save();
 
         return $this->sendResponse($user, 'User created');
     }
