@@ -38,4 +38,5 @@ Route::middleware('auth:api')->group(function () {
 
     // Comentários
     Route::post('postagens/{id}/comentar', 'ComentarioController@store');
+    Route::post('comentarios/{id}/excluir', 'ComentarioController@delete');
 });

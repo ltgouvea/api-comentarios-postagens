@@ -87,8 +87,17 @@ class ComentarioController extends Controller
      * @param  \App\Models\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function delete($id)
     {
-        //
+        //TODO: regras para exclusão
+        $comentario = Comentario::find($id);
+
+        if (!$comentario) {
+            return $this->sendError('Comentário não encontrado');
+        }
+
+        $comentario->delete();
+
+        return $this->sendResponse([], 'Comentário excluído com sucesso');
     }
 }
