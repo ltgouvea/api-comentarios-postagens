@@ -32,4 +32,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('notifications', 'NotificationController@getNotificationsFromUser');
     Route::get('notifications/unread', 'NotificationController@getUnreadNotificationsFromUser');
     Route::patch('notifications/read/{id}', 'NotificationController@markNotificationAsRead');
+
+    // Postagens
+    Route::post('postagens', 'PostController@store');
+
+    // Comentários
+    Route::post('postagens/{id}/comentar', 'ComentarioController@store');
 });

@@ -20,9 +20,8 @@ class CreateComentariosTable extends Migration
             $table->integer('post_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->string('login', 255);
-            $table->string('assinante', 255);
+            $table->boolean('assinante')->default(false);
             $table->boolean('compra_destaque')->default(false);
-            $table->boolean('em_destaque')->default(false);
             $table->integer('quantidade_moedas')->default(0);
             $table->text('comentario');
             $table->timestamps();
