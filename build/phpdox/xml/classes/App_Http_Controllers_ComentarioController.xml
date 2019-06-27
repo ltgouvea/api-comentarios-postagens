@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Http\Controllers\ComentarioController" namespace="App\Http\Controllers" name="ComentarioController" abstract="false" final="false" start="13" end="152">
+  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers" file="ComentarioController.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers/ComentarioController.php" size="4996" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="2a01137b7f70436a4f7ce19fe05117dcbfed62b0" relative="Http/Controllers/ComentarioController.php"/>
+  <extends full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller"/>
+  <method name="store" start="28" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Rota do endpoint para criação de comentários em postagens -&gt; controlado por throttle (o usuário pode comentar até 3x por minuto) -&gt; controlado por permissão (comentar-postagem)">Regras:
+- O usuário tem que ter saldo disponível caso queira comprar destaque
+- O usuário ou o dono da postagem tem que ser um assinante, caso contrário
+o comentário só é salvo com compra de destaque</description>
+      <param type="object" variable="$request">
+        <type full="\Illuminate\Http\Request" namespace="\Illuminate\Http" name="Request"/>
+      </param>
+      <return type="object">
+        <type full="\Illuminate\Http\Response" namespace="\Illuminate\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Illuminate\Http\Request" namespace="Illuminate\Http" name="Request"/>
+    </parameter>
+  </method>
+  <method name="comprarDestaque" start="74" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tenta comprar X moedas (1 moeda seria 1 real, pra facilitar) antes de salvar comentários com a flag compra_destaque no input"/>
+      <return description="|| Error" type="object">
+        <type full="App\Http\Controllers\void" namespace="App\Http\Controllers" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="user" byreference="false" type="{unknown}"/>
+    <parameter name="comentario" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="gerarRetencaoDoSistema" start="96" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Método responsável por criar a transação de retenção interna de comentários comprando destaque para o sistema"/>
+      <return type="object">
+        <type full="App\Http\Controllers\void" namespace="App\Http\Controllers" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="quantidadeDeMoedas" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="limparCacheDeComentariosDaPostagem" start="118" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Antes de salvar um comentário novo é necessário limpar o cache para que a listagem seja atualizada"/>
+      <return type="object">
+        <type full="App\Http\Controllers\void" namespace="App\Http\Controllers" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="delete" start="132" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Rota para exclusão de comentários Regra: só o dono do comentário ou da postagem relacionada podem excluir o comentário"/>
+      <param type="object" variable="$comentario">
+        <type full="\App\Models\Comentario" namespace="\App\Models" name="Comentario"/>
+      </param>
+      <return type="object">
+        <type full="\Illuminate\Http\Response" namespace="\Illuminate\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller">
+    <extends full="Illuminate\Routing\Controller" namespace="Illuminate\Routing" name="Controller" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Auth\Access\AuthorizesRequests" namespace="Illuminate\Foundation\Auth\Access" name="AuthorizesRequests" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Bus\DispatchesJobs" namespace="Illuminate\Foundation\Bus" name="DispatchesJobs" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Validation\ValidatesRequests" namespace="Illuminate\Foundation\Validation" name="ValidatesRequests" unresolved="true"/>
+    <method name="createResponse" start="21" end="28" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="mixed" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="createError" start="36" end="48" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="array" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="sendResponse" start="50" end="53" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="result" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="string" default="'Action sucessfull'"/>
+    </method>
+    <method name="sendError" start="55" end="58" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="code" byreference="false" type="integer" default="404"/>
+    </method>
+    <method name="validationError" start="60" end="63" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="unauthorizedError" start="65" end="68" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

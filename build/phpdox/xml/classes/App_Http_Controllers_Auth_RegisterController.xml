@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Http\Controllers\Auth\RegisterController" namespace="App\Http\Controllers\Auth" name="RegisterController" abstract="false" final="false" start="12" end="47">
+  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers/Auth" file="RegisterController.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers/Auth/RegisterController.php" size="1212" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="a5144597213cda7c256e937929bfae17a0787cee" relative="Http/Controllers/Auth/RegisterController.php"/>
+  <extends full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller"/>
+  <constructor name="__construct" start="19" end="20" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new controller instance."/>
+      <return type="object">
+        <type full="App\Http\Controllers\Auth\void" namespace="App\Http\Controllers\Auth" name="void"/>
+      </return>
+    </docblock>
+  </constructor>
+  <method name="create" start="28" end="46" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Create a new user instance after a valid registration."/>
+      <param type="object" variable="$request">
+        <type full="Illuminate\Http\Request" namespace="Illuminate\Http" name="Request"/>
+      </param>
+      <return type="object">
+        <type full="\App\User" namespace="\App" name="User"/>
+      </return>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Illuminate\Http\Request" namespace="Illuminate\Http" name="Request"/>
+    </parameter>
+  </method>
+  <parent full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller">
+    <extends full="Illuminate\Routing\Controller" namespace="Illuminate\Routing" name="Controller" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Auth\Access\AuthorizesRequests" namespace="Illuminate\Foundation\Auth\Access" name="AuthorizesRequests" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Bus\DispatchesJobs" namespace="Illuminate\Foundation\Bus" name="DispatchesJobs" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Validation\ValidatesRequests" namespace="Illuminate\Foundation\Validation" name="ValidatesRequests" unresolved="true"/>
+    <method name="createResponse" start="21" end="28" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="mixed" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="createError" start="36" end="48" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="array" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="sendResponse" start="50" end="53" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="result" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="string" default="'Action sucessfull'"/>
+    </method>
+    <method name="sendError" start="55" end="58" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="code" byreference="false" type="integer" default="404"/>
+    </method>
+    <method name="validationError" start="60" end="63" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="unauthorizedError" start="65" end="68" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

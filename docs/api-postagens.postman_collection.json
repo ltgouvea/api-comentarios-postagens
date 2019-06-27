@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "389ea839-ae24-46b1-a8bc-1efa3c602b5f",
+		"name": "api-postagens",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "client_secret",
+						"value": "PgoDC4ctyWIw45uwzfh2yH7mRKFcbeFiYYppwOZa",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"value": "2",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "grant_type",
+						"value": "password",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "PTGXNTsKwf1EOE2r6TAQaU9caqlZLHufKnQSApuC",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_secret",
+						"value": "PgoDC4ctyWIw45uwzfh2yH7mRKFcbeFiYYppwOZa",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"value": "2",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "grant_type",
+						"value": "password",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comentários do Usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_secret",
+						"type": "text",
+						"value": "PgoDC4ctyWIw45uwzfh2yH7mRKFcbeFiYYppwOZa",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"type": "text",
+						"value": "2",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": true
+					},
+					{
+						"key": "grant_type",
+						"type": "text",
+						"value": "password",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/comentarios_do_usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comentarios_do_usuario"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notificações",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_secret",
+						"type": "text",
+						"value": "PgoDC4ctyWIw45uwzfh2yH7mRKFcbeFiYYppwOZa",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"type": "text",
+						"value": "2",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "grant_type",
+						"type": "text",
+						"value": "password",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/notifications",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comentários de postagem",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_secret",
+						"value": "PgoDC4ctyWIw45uwzfh2yH7mRKFcbeFiYYppwOZa",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"value": "2",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "grant_type",
+						"value": "password",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/postagens/2/comentarios?page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"postagens",
+						"2",
+						"comentarios"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Postagem",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"foto\",\n    \"source\": \"images/test.png\",\n    \"assinante\": \"true\",\n    \"user_id\": 1\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/postagens",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"postagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comentario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_sapiens}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 1,\n    \"post_id\": 2,\n    \"compra_destaque\": true,\n    \"quantidade_moedas\": 10,\n    \"comentario\": \"Que top\"\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8000/api/postagens/2/comentar/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"postagens",
+						"2",
+						"comentar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comentario (Exclusão)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ3ZTc4ZjRjMTQwYjMzY2FlYzQxOTA5YThlMTg1MmMwMDAxZWFiMjhiOGY5MzhjZDAxZWU4MWJhMTZjOTlhZWEzZTJjMDRiMzEwMWNlMGU4In0.eyJhdWQiOiIyIiwianRpIjoiZDdlNzhmNGMxNDBiMzNjYWVjNDE5MDlhOGUxODUyYzAwMDFlYWIyOGI4ZjkzOGNkMDFlZTgxYmExNmM5OWFlYTNlMmMwNGIzMTAxY2UwZTgiLCJpYXQiOjE1NjE1MjQwOTMsIm5iZiI6MTU2MTUyNDA5MywiZXhwIjoxNTYyODIwMDkzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qrlp-pkDiWzaU8tEo9c3leDY3yY7LQreFvmdLYPDopwLMzWYJcZukYo0cPgywYixddJb2UWczkSCUOoUQHv7RQQhIZEzhKoWEhDdPwGoh2XUpYf8f2dbZxNOOj6dRaJoje_Y8Vc85Wt774ieEuqrboISZeTr2H7trTcKA40_9r79TNPjxsiMgFgXCx51lJsN2Jc83Xo1diRcE_dKgPpMrOgdAR3drwglqtVQjdcJvVLEL5J0s6Iph2FRcAGVcpyDVSo9R7PivsxUspsXcmUX1JeWE6QwXKPVYn_F_aHEueZFwZxJ8Ww22krP3DpyDxJvu9osjHFNlT6aSipbpt_eu_fOnQuTVea7B4iuVZoY0nExvJwc4BpByvJbGULecNhrEzRWGqD__M9xOU1mw6BHsMNDGQ9JvhGNP-vRbjLMtiDARXbsEoxCID_BNACTmMedtEkSUUVvXWeN2JReinuz9qc6nDQGCXG7mM6elVZM2lppAev-A8jQcXsF-AtJk6hQt6GfveGJcrMaEMvXLSXg7ckB3JITpoJ1iZZyV2pB0oZxpDI8Ns5nTG8B66jBaFKHOQKJkSNjtMLGvq_BfhV6h12qJvSci4gYgUc1BahjS491QP-HEkevuDnKvXxeKx7K7NF6YSF0bD9MF01mrJ-LYcNczx2dPD5R9U5JaKSg0Ww",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/comentarios/1/excluir",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comentarios",
+						"1",
+						"excluir"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

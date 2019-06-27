@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - App\User</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#App">App</a>
+          </li>
+          <li class="separator">User</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/User.php.xhtml#line14">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>App\</small>User</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class User
+                extends User
+            {<br/><ul class="none"><li>// members</li><li>protected array <a href="#members">$fillable</a> =
+                        ;
+                    </li><li>protected array <a href="#members">$hidden</a> =
+                        ;
+                    </li><li>protected array <a href="#members">$validation_rules</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public HasMany <a title="App\User" href="../classes/App_User/passwordResets.xhtml">passwordResets</a>()
+                    </li><li>public string <a title="App\User" href="../classes/App_User/hashPassword.xhtml">hashPassword</a>()
+                    </li><li>public  <a title="App\User" href="../classes/App_User/getStoreValidationRules.xhtml">getStoreValidationRules</a>()
+                    </li><li>public  <a title="App\User" href="../classes/App_User/getUpdateValidationRules.xhtml">getUpdateValidationRules</a>()
+                    </li><li>public  <a title="App\User" href="../classes/App_User/getPasswordValidationRules.xhtml">getPasswordValidationRules</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/scopeSearch.xhtml">scopeSearch</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/saveLastLogin.xhtml">saveLastLogin</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/generatePasswordResetMail.xhtml">generatePasswordResetMail</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/redefinePassword.xhtml">redefinePassword</a>()
+                    </li><li>public Relationship <a title="App\User" href="../classes/App_User/comentarios.xhtml">comentarios</a>()
+                    </li><li>public boolean <a title="App\User" href="../classes/App_User/verificarSaldo.xhtml">verificarSaldo</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/creditar.xhtml">creditar</a>()
+                    </li><li>public void <a title="App\User" href="../classes/App_User/debitar.xhtml">debitar</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>Illuminate\Foundation\Auth\User</li>
+          </ul>
+          <h4>Uses</h4>
+          <ul>
+            <li>Laravel\Passport\HasApiTokens</li>
+            <li>Illuminate\Notifications\Notifiable</li>
+            <li>Laratrust\Traits\LaratrustUserTrait</li>
+            <li>Illuminate\Database\Eloquent\SoftDeletes</li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="fillable"><strong>$fillable</strong>
+                —
+                array<br/><span class="indent">The attributes that are mass assignable.</span></li>
+            <li id="hidden"><strong>$hidden</strong>
+                —
+                array<br/><span class="indent">The attributes that should be hidden for arrays.</span></li>
+            <li id="validation_rules"><strong>$validation_rules</strong>
+                —
+                array<br/><span class="indent">Array containing validation rules of this model</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="comentarios"><a title="App\User" href="../classes/App_User/comentarios.xhtml">comentarios()</a>
+                — Relacionamento com comentários</li>
+            <li id="creditar"><a title="App\User" href="../classes/App_User/creditar.xhtml">creditar()</a>
+                — Aumenta o saldo do usuário</li>
+            <li id="debitar"><a title="App\User" href="../classes/App_User/debitar.xhtml">debitar()</a>
+                — Diminui o saldo do usuário</li>
+            <li id="generatePasswordResetMail"><a title="App\User" href="../classes/App_User/generatePasswordResetMail.xhtml">generatePasswordResetMail()</a>
+                — Send the user a link to reset their password using the PasswordReset model</li>
+            <li id="getPasswordValidationRules"><a title="App\User" href="../classes/App_User/getPasswordValidationRules.xhtml">getPasswordValidationRules()</a>
+                — Get the password validation rule</li>
+            <li id="getStoreValidationRules"><a title="App\User" href="../classes/App_User/getStoreValidationRules.xhtml">getStoreValidationRules()</a>
+                — Get the validation rules that apply to the STORE request</li>
+            <li id="getUpdateValidationRules"><a title="App\User" href="../classes/App_User/getUpdateValidationRules.xhtml">getUpdateValidationRules()</a>
+                — Get the validation rules that apply to the STORE request</li>
+            <li id="hashPassword"><a title="App\User" href="../classes/App_User/hashPassword.xhtml">hashPassword()</a>
+                — Hash password using Illuminate\Support\Facades\Hash</li>
+            <li id="passwordResets"><a title="App\User" href="../classes/App_User/passwordResets.xhtml">passwordResets()</a>
+                — HasMany App\PasswordResets relationship</li>
+            <li id="redefinePassword"><a title="App\User" href="../classes/App_User/redefinePassword.xhtml">redefinePassword()</a>
+                — Changes the user password and save the date it was changed</li>
+            <li id="saveLastLogin"><a title="App\User" href="../classes/App_User/saveLastLogin.xhtml">saveLastLogin()</a>
+                — Save last login time and IP</li>
+            <li id="scopeSearch"><a title="App\User" href="../classes/App_User/scopeSearch.xhtml">scopeSearch()</a>
+                — Simple search by name and email</li>
+            <li id="verificarSaldo"><a title="App\User" href="../classes/App_User/verificarSaldo.xhtml">verificarSaldo()</a>
+                — Retorna true caso o saldo do usuário seja &gt;= à quantidade de moedas enviada</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
