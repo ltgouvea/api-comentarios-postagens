@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Notifications\ComentarioNaPostagem" namespace="App\Notifications" name="ComentarioNaPostagem" abstract="false" final="false" start="10" end="79">
+  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Notifications" file="ComentarioNaPostagem.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Notifications/ComentarioNaPostagem.php" size="1937" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="981701f966c98f2c10661dd543e340bf338acb27" relative="Notifications/ComentarioNaPostagem.php"/>
+  <extends full="Illuminate\Notifications\Notification" namespace="Illuminate\Notifications" name="Notification" unresolved="true"/>
+  <uses full="Illuminate\Bus\Queueable" namespace="Illuminate\Bus" name="Queueable" start="12" end="12" unresolved="true"/>
+  <member name="postagem" visibility="private" static="false" line="14"/>
+  <member name="user" visibility="private" static="false" line="15"/>
+  <constructor name="__construct" start="22" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new notification instance."/>
+      <return type="object">
+        <type full="App\Notifications\void" namespace="App\Notifications" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="postagem" byreference="false" type="{unknown}"/>
+    <parameter name="user" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="via" start="34" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the notification's delivery channels."/>
+      <param type="mixed" variable="$notifiable"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="notifiable" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="return ['database', 'email'];" line="36"/>
+    </inline>
+  </method>
+  <method name="toMail" start="46" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the mail representation of the notification."/>
+      <param type="mixed" variable="$notifiable"/>
+      <return type="object">
+        <type full="\Illuminate\Notifications\Messages\MailMessage" namespace="\Illuminate\Notifications\Messages" name="MailMessage"/>
+      </return>
+    </docblock>
+    <parameter name="notifiable" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="toArray" start="63" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the array representation of the notification."/>
+      <param type="mixed" variable="$notifiable"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="notifiable" byreference="false" type="{unknown}"/>
+  </method>
+</class>

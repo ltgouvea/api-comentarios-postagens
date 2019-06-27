@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\User" namespace="App" name="User" abstract="false" final="false" start="14" end="218">
+  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app" file="User.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/User.php" size="5501" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="21c4d771ad64e178ce2cbcd104f25b7d990bd658" relative="User.php"/>
+  <extends full="Illuminate\Foundation\Auth\User" namespace="Illuminate\Foundation\Auth" name="User" unresolved="true"/>
+  <uses full="Laravel\Passport\HasApiTokens" namespace="Laravel\Passport" name="HasApiTokens" start="16" end="16" unresolved="true"/>
+  <uses full="Illuminate\Notifications\Notifiable" namespace="Illuminate\Notifications" name="Notifiable" start="16" end="16" unresolved="true"/>
+  <uses full="Laratrust\Traits\LaratrustUserTrait" namespace="Laratrust\Traits" name="LaratrustUserTrait" start="16" end="16" unresolved="true"/>
+  <uses full="Illuminate\Database\Eloquent\SoftDeletes" namespace="Illuminate\Database\Eloquent" name="SoftDeletes" start="16" end="16" unresolved="true"/>
+  <member name="fillable" default="" type="array" visibility="protected" static="false" line="23">
+    <docblock>
+      <description compact="The attributes that are mass assignable."/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="hidden" default="" type="array" visibility="protected" static="false" line="38">
+    <docblock>
+      <description compact="The attributes that should be hidden for arrays."/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="validation_rules" default="" type="array" visibility="protected" static="false" line="48">
+    <docblock>
+      <description compact="Array containing validation rules of this model"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <method name="passwordResets" start="69" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="HasMany App\PasswordResets relationship"/>
+      <return type="object">
+        <type full="App\HasMany" namespace="App" name="HasMany"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="hashPassword" start="80" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Hash password using Illuminate\Support\Facades\Hash"/>
+      <param type="string" variable="$password"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="password" byreference="false" type="string"/>
+  </method>
+  <method name="getStoreValidationRules" start="90" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the validation rules that apply to the STORE request"/>
+      <return type="object"/>
+    </docblock>
+  </method>
+  <method name="getUpdateValidationRules" start="100" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the validation rules that apply to the STORE request"/>
+      <return type="object"/>
+    </docblock>
+    <inline>
+      <comment value="Unset the 'required' rule" line="104"/>
+    </inline>
+  </method>
+  <method name="getPasswordValidationRules" start="117" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the password validation rule"/>
+      <return type="object"/>
+    </docblock>
+  </method>
+  <method name="scopeSearch" start="132" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple search by name and email"/>
+      <param type="object" variable="$query">
+        <type full="App\[type]" namespace="App" name="[type]"/>
+      </param>
+      <param type="string" variable="$search"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="query" byreference="false" type="{unknown}"/>
+    <parameter name="search" byreference="false" type="string"/>
+  </method>
+  <method name="saveLastLogin" start="143" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Save last login time and IP"/>
+      <param type="string" variable="$ip"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="ip" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="generatePasswordResetMail" start="156" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send the user a link to reset their password using the PasswordReset model"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="redefinePassword" start="168" end="173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Changes the user password and save the date it was changed"/>
+      <param type="string" variable="$newPassword"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="newPassword" byreference="false" type="string"/>
+  </method>
+  <method name="comentarios" start="180" end="183" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Relacionamento com comentários"/>
+      <return description="(hasMany)" type="object">
+        <type full="App\Relationship" namespace="App" name="Relationship"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="verificarSaldo" start="191" end="194" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retorna true caso o saldo do usuário seja &gt;= à quantidade de moedas enviada"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="quantidadeDeMoedas" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="creditar" start="201" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Aumenta o saldo do usuário"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="quantidadeDeMoedas" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="debitar" start="212" end="216" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Diminui o saldo do usuário"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="quantidadeDeMoedas" byreference="false" type="{unknown}"/>
+  </method>
+</class>

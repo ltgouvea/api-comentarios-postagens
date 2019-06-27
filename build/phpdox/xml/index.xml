@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app">
+  <namespace name="App\Console">
+    <class name="Kernel" src="Console/Kernel.php" xml="classes/App_Console_Kernel.xml"/>
+  </namespace>
+  <namespace name="App">
+    <class name="Role" src="Role.php" xml="classes/App_Role.xml"/>
+    <class name="PasswordReset" src="PasswordReset.php" xml="classes/App_PasswordReset.xml"/>
+    <class name="User" src="User.php" xml="classes/App_User.xml"/>
+    <class name="Permission" src="Permission.php" xml="classes/App_Permission.xml"/>
+  </namespace>
+  <namespace name="App\Http">
+    <class name="Kernel" src="Http/Kernel.php" xml="classes/App_Http_Kernel.xml"/>
+  </namespace>
+  <namespace name="App\Http\Controllers\Auth">
+    <class name="LoginController" src="Http/Controllers/Auth/LoginController.php" xml="classes/App_Http_Controllers_Auth_LoginController.xml"/>
+    <class name="RegisterController" src="Http/Controllers/Auth/RegisterController.php" xml="classes/App_Http_Controllers_Auth_RegisterController.xml"/>
+  </namespace>
+  <namespace name="App\Http\Controllers">
+    <class name="NotificationController" src="Http/Controllers/NotificationController.php" xml="classes/App_Http_Controllers_NotificationController.xml"/>
+    <class name="ComentarioController" src="Http/Controllers/ComentarioController.php" xml="classes/App_Http_Controllers_ComentarioController.xml"/>
+    <class name="Controller" src="Http/Controllers/Controller.php" xml="classes/App_Http_Controllers_Controller.xml"/>
+    <class name="UserController" src="Http/Controllers/UserController.php" xml="classes/App_Http_Controllers_UserController.xml"/>
+    <class name="PostController" src="Http/Controllers/PostController.php" xml="classes/App_Http_Controllers_PostController.xml"/>
+  </namespace>
+  <namespace name="App\Http\Middleware">
+    <class name="Authenticate" src="Http/Middleware/Authenticate.php" xml="classes/App_Http_Middleware_Authenticate.xml"/>
+    <class name="CheckForMaintenanceMode" src="Http/Middleware/CheckForMaintenanceMode.php" xml="classes/App_Http_Middleware_CheckForMaintenanceMode.xml"/>
+    <class name="VerifyCsrfToken" src="Http/Middleware/VerifyCsrfToken.php" xml="classes/App_Http_Middleware_VerifyCsrfToken.xml"/>
+    <class name="RedirectIfAuthenticated" src="Http/Middleware/RedirectIfAuthenticated.php" xml="classes/App_Http_Middleware_RedirectIfAuthenticated.xml"/>
+    <class name="TrustProxies" src="Http/Middleware/TrustProxies.php" xml="classes/App_Http_Middleware_TrustProxies.xml"/>
+    <class name="EncryptCookies" src="Http/Middleware/EncryptCookies.php" xml="classes/App_Http_Middleware_EncryptCookies.xml"/>
+    <class name="TrimStrings" src="Http/Middleware/TrimStrings.php" xml="classes/App_Http_Middleware_TrimStrings.xml"/>
+  </namespace>
+  <namespace name="App\Http\Requests">
+    <class name="StoreUser" src="Http/Requests/StoreUser.php" xml="classes/App_Http_Requests_StoreUser.xml"/>
+  </namespace>
+  <namespace name="App\Notifications">
+    <class name="ComentarioNaPostagem" src="Notifications/ComentarioNaPostagem.php" xml="classes/App_Notifications_ComentarioNaPostagem.xml"/>
+  </namespace>
+  <namespace name="App\Models">
+    <class name="Post" src="Models/Post.php" xml="classes/App_Models_Post.xml"/>
+    <class name="Comentario" src="Models/Comentario.php" xml="classes/App_Models_Comentario.xml"/>
+    <class name="TransacaoLog" src="Models/TransacaoLog.php" xml="classes/App_Models_TransacaoLog.xml"/>
+  </namespace>
+  <namespace name="App\Providers">
+    <class name="EventServiceProvider" src="Providers/EventServiceProvider.php" xml="classes/App_Providers_EventServiceProvider.xml"/>
+    <class name="RouteServiceProvider" src="Providers/RouteServiceProvider.php" xml="classes/App_Providers_RouteServiceProvider.xml"/>
+    <class name="BroadcastServiceProvider" src="Providers/BroadcastServiceProvider.php" xml="classes/App_Providers_BroadcastServiceProvider.xml"/>
+    <class name="AuthServiceProvider" src="Providers/AuthServiceProvider.php" xml="classes/App_Providers_AuthServiceProvider.xml"/>
+    <class name="AppServiceProvider" src="Providers/AppServiceProvider.php" xml="classes/App_Providers_AppServiceProvider.xml"/>
+  </namespace>
+  <namespace name="App\Exceptions">
+    <class name="Handler" src="Exceptions/Handler.php" xml="classes/App_Exceptions_Handler.xml"/>
+  </namespace>
+  <namespace name="App\Mail">
+    <class name="PasswordChange" src="Mail/PasswordChange.php" xml="classes/App_Mail_PasswordChange.xml"/>
+    <class name="PasswordReset" src="Mail/PasswordReset.php" xml="classes/App_Mail_PasswordReset.xml"/>
+  </namespace>
+</index>

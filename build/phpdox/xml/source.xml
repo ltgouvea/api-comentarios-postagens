@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<source xmlns="http://xml.phpdox.net/src">
+  <dir name="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app">
+    <dir name="Console">
+      <file name="Kernel.php" size="848" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="cd91585cead4e037d4b0d4fcc5ee3605b0c5bb7c" xml="tokens/Console/Kernel.php.xml"/>
+    </dir>
+    <file name="Role.php" size="104" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="51626cea379846bdf14adef19ac01e2a788605ab" xml="tokens/Role.php.xml"/>
+    <dir name="Http">
+      <file name="Kernel.php" size="3027" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="19f7df99e78737a120d0abda2022d0f71ee8b137" xml="tokens/Http/Kernel.php.xml"/>
+      <dir name="Controllers">
+        <dir name="Auth">
+          <file name="LoginController.php" size="912" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="d9b3e9cddeabf6a35a5a3b41764ad8625b629325" xml="tokens/Http/Controllers/Auth/LoginController.php.xml"/>
+          <file name="RegisterController.php" size="1212" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="a5144597213cda7c256e937929bfae17a0787cee" xml="tokens/Http/Controllers/Auth/RegisterController.php.xml"/>
+        </dir>
+        <file name="NotificationController.php" size="2305" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="41747fb3e77baee7541e6ccc3f51dff46bbba407" xml="tokens/Http/Controllers/NotificationController.php.xml"/>
+        <file name="ComentarioController.php" size="4996" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="2a01137b7f70436a4f7ce19fe05117dcbfed62b0" xml="tokens/Http/Controllers/ComentarioController.php.xml"/>
+        <file name="Controller.php" size="1637" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="8b27b806b458f1e0f65127e20502cfd9904f950f" xml="tokens/Http/Controllers/Controller.php.xml"/>
+        <file name="UserController.php" size="5476" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="185f80b85ad5de54145ed3d276c9b13a60fd3dc7" xml="tokens/Http/Controllers/UserController.php.xml"/>
+        <file name="PostController.php" size="1489" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="54a7945020a6e2a5fafb9e7cd2cd4448d9191ee3" xml="tokens/Http/Controllers/PostController.php.xml"/>
+      </dir>
+      <dir name="Middleware">
+        <file name="Authenticate.php" size="464" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="296d638e7ef4a8c705dd1a28c1f4b5614cb9aa1b" xml="tokens/Http/Middleware/Authenticate.php.xml"/>
+        <file name="CheckForMaintenanceMode.php" size="335" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="895a59c64cdf100b61e594a606f407c587b4c719" xml="tokens/Http/Middleware/CheckForMaintenanceMode.php.xml"/>
+        <file name="VerifyCsrfToken.php" size="463" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="70eb8af1992cda6f413a14ceb6495f1fbdec4936" xml="tokens/Http/Middleware/VerifyCsrfToken.php.xml"/>
+        <file name="RedirectIfAuthenticated.php" size="523" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="99e1fc9d7e220277912272b3998b2410742308d7" xml="tokens/Http/Middleware/RedirectIfAuthenticated.php.xml"/>
+        <file name="TrustProxies.php" size="429" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="c79f381a75f648bf079705c161e55a3e2d8ada9e" xml="tokens/Http/Middleware/TrustProxies.php.xml"/>
+        <file name="EncryptCookies.php" size="294" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="6076ea9a9b9b300ebd0a2cc979c79fb7cb11569d" xml="tokens/Http/Middleware/EncryptCookies.php.xml"/>
+        <file name="TrimStrings.php" size="340" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="e5b0f4959d4441b5c5dada8ba5ca539bb3e13d3b" xml="tokens/Http/Middleware/TrimStrings.php.xml"/>
+      </dir>
+      <dir name="Requests">
+        <file name="StoreUser.php" size="1370" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="f78ed523722e63e1c7e46a87eaf7366d31f37488" xml="tokens/Http/Requests/StoreUser.php.xml"/>
+      </dir>
+    </dir>
+    <dir name="Notifications">
+      <file name="ComentarioNaPostagem.php" size="1937" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="981701f966c98f2c10661dd543e340bf338acb27" xml="tokens/Notifications/ComentarioNaPostagem.php.xml"/>
+    </dir>
+    <file name="PasswordReset.php" size="1957" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="7b84f372ea93fb99f065113d157a26861b1eedd5" xml="tokens/PasswordReset.php.xml"/>
+    <file name="User.php" size="5501" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="21c4d771ad64e178ce2cbcd104f25b7d990bd658" xml="tokens/User.php.xml"/>
+    <file name="Permission.php" size="369" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="1332aebee92d38a64660acd2fab157ff23fb1319" xml="tokens/Permission.php.xml"/>
+    <dir name="Models">
+      <file name="Post.php" size="618" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="94b8d017e6a6190ec457eb4179f2d98838b7e06b" xml="tokens/Models/Post.php.xml"/>
+      <file name="Comentario.php" size="1560" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="528cf74bdeb6fc15a3edd722155d349fd5623797" xml="tokens/Models/Comentario.php.xml"/>
+      <file name="TransacaoLog.php" size="419" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="76062bd80c9fdf6252e7a109967239a5b8fffba4" xml="tokens/Models/TransacaoLog.php.xml"/>
+    </dir>
+    <dir name="Providers">
+      <file name="EventServiceProvider.php" size="710" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="3e6e016b90e90ee1d36b64e78bd9f3a7cb09f063" xml="tokens/Providers/EventServiceProvider.php.xml"/>
+      <file name="RouteServiceProvider.php" size="1529" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="f63ca296b61e5db05dfb09cd363884a0673cd06b" xml="tokens/Providers/RouteServiceProvider.php.xml"/>
+      <file name="BroadcastServiceProvider.php" size="380" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="b10849da9343ef9ce146dd3de8ea0527d4c8fb86" xml="tokens/Providers/BroadcastServiceProvider.php.xml"/>
+      <file name="AuthServiceProvider.php" size="738" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="f8386d20bfe240e96cec32dded3eff4ff779e0b2" xml="tokens/Providers/AuthServiceProvider.php.xml"/>
+      <file name="AppServiceProvider.php" size="403" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="64e149d26913bfed9afbf799e911246df447c2a2" xml="tokens/Providers/AppServiceProvider.php.xml"/>
+    </dir>
+    <dir name="Exceptions">
+      <file name="Handler.php" size="1058" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="96a89a0f03747fc5f35b9c291106924a92c3236e" xml="tokens/Exceptions/Handler.php.xml"/>
+    </dir>
+    <dir name="Mail">
+      <file name="PasswordChange.php" size="763" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="3cfb44b8eb926ad94c29c952eae798933e2c72d8" xml="tokens/Mail/PasswordChange.php.xml"/>
+      <file name="PasswordReset.php" size="801" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="ca2dda2b8a19b9193154f184fa578809d7d706c6" xml="tokens/Mail/PasswordReset.php.xml"/>
+    </dir>
+  </dir>
+</source>

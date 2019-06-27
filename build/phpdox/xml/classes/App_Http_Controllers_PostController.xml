@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Http\Controllers\PostController" namespace="App\Http\Controllers" name="PostController" abstract="false" final="false" start="10" end="49">
+  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers" file="PostController.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Http/Controllers/PostController.php" size="1489" time="2019-06-27T17:32:29+00:00" unixtime="1561656749" sha1="54a7945020a6e2a5fafb9e7cd2cd4448d9191ee3" relative="Http/Controllers/PostController.php"/>
+  <extends full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller"/>
+  <method name="store" start="18" end="25" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Store a newly created resource in storage."/>
+      <param type="object" variable="$request">
+        <type full="\Illuminate\Http\Request" namespace="\Illuminate\Http" name="Request"/>
+      </param>
+      <return type="object">
+        <type full="\Illuminate\Http\Response" namespace="\Illuminate\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Illuminate\Http\Request" namespace="Illuminate\Http" name="Request"/>
+    </parameter>
+  </method>
+  <method name="listarComentariosDaPostagem" start="33" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Lista os comentários de uma postagem -&gt; controlado por throttle (o usuário pode consultar esse endpoint até 20x por minuto)"/>
+      <return type="object">
+        <type full="Illuminate\Http\Response" namespace="Illuminate\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Guarda valores em cache para otimizar desempenho do endpoint" line="41"/>
+    </inline>
+  </method>
+  <parent full="App\Http\Controllers\Controller" namespace="App\Http\Controllers" name="Controller">
+    <extends full="Illuminate\Routing\Controller" namespace="Illuminate\Routing" name="Controller" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Auth\Access\AuthorizesRequests" namespace="Illuminate\Foundation\Auth\Access" name="AuthorizesRequests" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Bus\DispatchesJobs" namespace="Illuminate\Foundation\Bus" name="DispatchesJobs" unresolved="true"/>
+    <uses full="Illuminate\Foundation\Validation\ValidatesRequests" namespace="Illuminate\Foundation\Validation" name="ValidatesRequests" unresolved="true"/>
+    <method name="createResponse" start="21" end="28" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="mixed" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="createError" start="36" end="48" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$message"/>
+        <param type="array" variable="$data"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="sendResponse" start="50" end="53" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="result" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="string" default="'Action sucessfull'"/>
+    </method>
+    <method name="sendError" start="55" end="58" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="code" byreference="false" type="integer" default="404"/>
+    </method>
+    <method name="validationError" start="60" end="63" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="data" byreference="false" type="array" default=""/>
+    </method>
+    <method name="unauthorizedError" start="65" end="68" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>
