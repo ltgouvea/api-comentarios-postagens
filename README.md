@@ -23,12 +23,15 @@ Lucas T. A. Gouvêa
 
 ```bash
 cp .env.example .env
-docker-compose up --build -d
 docker-compose exec app composer install
-docker-compose exec app php artisan migrate:fresh --seed
+docker-compose exec app chmod -R 775 storage
 docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan config:cache
+docker-compose exec app php artisan migrate:fresh --seed
 docker-compose exec app php artisan passport:install
 ```
+
+Caso prefira, há um script na raiz chamado `app-install.sh` com as mesmas instruções.
 
 O server ficará escutando na porta 8000.
 
