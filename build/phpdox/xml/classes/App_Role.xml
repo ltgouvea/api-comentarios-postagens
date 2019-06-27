@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="App\Role" namespace="App" name="Role" abstract="false" final="false" start="7" end="10">
-  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app" file="Role.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Role.php" size="104" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="51626cea379846bdf14adef19ac01e2a788605ab" relative="Role.php"/>
-  <extends full="Laratrust\Models\LaratrustRole" namespace="Laratrust\Models" name="LaratrustRole" unresolved="true"/>
-</class>

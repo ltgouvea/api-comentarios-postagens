@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="App\Permission" namespace="App" name="Permission" abstract="false" final="false" start="7" end="19">
-  <file path="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app" file="Permission.php" realpath="/home/k2/Projects/Personal/Playground/api-comentarios-postagens/app/Permission.php" size="369" time="2019-06-26T03:11:12+00:00" unixtime="1561518672" sha1="1332aebee92d38a64660acd2fab157ff23fb1319" relative="Permission.php"/>
-  <extends full="Laratrust\Models\LaratrustPermission" namespace="Laratrust\Models" name="LaratrustPermission" unresolved="true"/>
-  <member name="fillable" default="" type="array" visibility="public" static="false" line="9"/>
-  <method name="roles" start="15" end="18" abstract="false" final="false" static="false" visibility="public"/>
-</class>
