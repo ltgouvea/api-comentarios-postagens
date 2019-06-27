@@ -32,4 +32,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('notifications', 'NotificationController@getNotificationsFromUser');
     Route::get('notifications/unread', 'NotificationController@getUnreadNotificationsFromUser');
     Route::patch('notifications/read/{id}', 'NotificationController@markNotificationAsRead');
+
+    // Postagens
+    Route::post('postagens', 'PostController@store');
+
+    // Comentários
+    Route::post('postagens/{id}/comentar', 'ComentarioController@store')->middleware(['throttle:3,1', 'permission:comentar-postagem']);
+    Route::get('postagens/{id}/comentarios', 'PostController@listarComentariosDaPostagem')->middleware('throttle:20,1');
+    Route::get('comentarios_do_usuario', 'UserController@comentariosDoUsuario');
+    Route::post('comentarios/{id}/excluir', 'ComentarioController@delete');
 });

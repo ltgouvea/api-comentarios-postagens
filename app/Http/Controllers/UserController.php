@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\PasswordReset;
@@ -178,5 +179,18 @@ class UserController extends Controller
         $user->delete();
 
         return $this->sendResponse($user, 'Users deleted sucessfully');
+    }
+
+    /**
+     * Retorna listagem de todos os comentários do usuário
+     *
+     * @return void
+     */
+    public function comentariosDoUsuario()
+    {
+        $user = Auth::user();
+        $comentariosDoUsuario = $user->comentarios()->paginate(20);
+
+        return $this->sendResponse($comentariosDoUsuario, 'Comentários do usuário carregados com sucesso');
     }
 }

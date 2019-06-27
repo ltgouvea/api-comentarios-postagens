@@ -4,7 +4,7 @@ API desenvolvida para o processo seletivo da eSapiens utilizando PHP (Laravel) e
 
 ## Endpoints
 
-- (POST) `/postagens` Criar uma postagem; (formato do input: **JSON**)
+- (POST) `/postagens` Criar uma postagem;
 - (POST) `/postagens/{id}/comentar` Comentar em uma postagem;
 - (POST)`/comentarios/{id}/excluir` Exclusão de comentário.
 
