@@ -5,29 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,47 +25,25 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Lista os comentários de uma postagem
+     * -> controlado por throttle (o usuário pode consultar esse endpoint até 20x por minuto)
      *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show(Post $post)
+    public function listarComentariosDaPostagem($id)
     {
-        //
-    }
+        $post = Post::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
+        if (!$post) {
+            return $this->sendError('Postagem não encontrada.');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
+        // Guarda valores em cache para otimizar desempenho do endpoint
+        $comentariosDaPostagem = Cache::remember("postagem_$id", 60, function () use ($post){
+            // Ordena cronologicamente, com os destaques ordenados por quantidade de moedas
+            return $post->comentarios()->orderBy('created_at', 'desc')->orderBy('compra_destaque', 'desc')->orderBy('quantidade_moedas', 'desc')->paginate(20);
+        });
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        //
+        return $this->sendResponse($comentariosDaPostagem, 'Comentários carregados com sucesso');
     }
 }

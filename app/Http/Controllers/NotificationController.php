@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+const EXPIRATION_TIME_IN_HOURS = 72;
+
 class NotificationController extends Controller
 {
+
     /**
      * Display an paginated list of the user's all/read/unread notifications.
      * GET /notifications
@@ -15,15 +18,20 @@ class NotificationController extends Controller
      */
     public function getNotificationsFromUser(Request $request)
     {
-        $notifications = $request->user()->notifications;
+        $notifications = $request->user()->notifications();
 
         if ($request->has('read') || $request->has('unread')) {
             if ($request->input('read')) {
-                $notifications = $request->user()->readNotifications;
+                $notifications = $request->user()->readNotifications();
             } elseif ($request->input('unread')) {
-                $notifications = $request->user()->unreadNotifications;
+                $notifications = $request->user()->unreadNotifications();
             }
         }
+
+        $now = \Carbon\Carbon::now();
+
+        // Filtra notificações para as últimas 72 horas
+        $notifications = $notifications->where(\DB::raw("(EXTRACT(EPOCH FROM '$now'::timestamp) - EXTRACT(EPOCH FROM created_at))/3600"), '<=', EXPIRATION_TIME_IN_HOURS)->get();
 
         return $this->sendResponse($notifications->forPage($request->page, 25), 'Notifications retrieved succesfully');
     }
@@ -37,7 +45,13 @@ class NotificationController extends Controller
      */
     public function getUnreadNotificationsFromUser(Request $request)
     {
-        return $this->sendResponse($request->user()->unreadNotifications, 'Unread Notifications retrieved succesfully');
+        $now = \Carbon\Carbon::now();
+        $unreadNotifications = $request->user()
+                                       ->unreadNotifications()
+                                       ->where(\DB::raw("(EXTRACT(EPOCH FROM '$now'::timestamp) - EXTRACT(EPOCH FROM created_at))/3600"), '<=', EXPIRATION_TIME_IN_HOURS)
+                                       ->get();
+
+        return $this->sendResponse($unreadNotifications, 'Unread Notifications retrieved succesfully');
     }
 
     /**

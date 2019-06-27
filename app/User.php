@@ -171,4 +171,48 @@ class User extends Authenticatable
         $this->last_password_change = Carbon::now();
         $this->save();
     }
+
+    /**
+     * Relacionamento com comentários
+     *
+     * @return Relationship (hasMany)
+     */
+    public function comentarios()
+    {
+        return $this->hasMany('App\Models\Comentario');
+    }
+
+    /**
+     * Retorna true caso o saldo do usuário seja >= à quantidade de moedas
+     * enviada
+     *
+     * @return boolean
+     */
+    public function verificarSaldo($quantidadeDeMoedas)
+    {
+        return $this->saldo >= $quantidadeDeMoedas;
+    }
+
+    /**
+     * Aumenta o saldo do usuário
+     *
+     * @return void
+     */
+    public function creditar($quantidadeDeMoedas)
+    {
+        $this->saldo += $quantidadeDeMoedas;
+        $this->save();
+    }
+
+    /**
+     * Diminui o saldo do usuário
+     *
+     * @return void
+     */
+    public function debitar($quantidadeDeMoedas)
+    {
+        $this->saldo -= $quantidadeDeMoedas;
+        $this->save();
+    }
+
 }
