@@ -47,7 +47,8 @@ Corpo do request:
 ```
 
 # Documentação
-Foi gerada uma documentação pelo Phpdox em `/docs/html`
+Foi gerada uma documentação pelo Phpdox em `/docs/html`.
+
 Também há uma collection de requests para o Postman em `/docs/api-postagens.postman_collection.json`,
 para usar basta importá-la no Postman, colocar o client secret gerado pelo Passport no corpo do request de login
 e inicializar uma váriavel de ambiente chamada `token_sapiens` com o valor do `access_token` na resposta desse endpoint.
